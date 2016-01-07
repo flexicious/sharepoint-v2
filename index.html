@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Grid App</title>
+
+    <!-- js scripts -->
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/jquery-ui.min.js"></script>
+    <script src="js/lib/jquery.toaster.js"></script>
+    <script src="js/lib/bootstrap-select.js"></script>
+    <script src="js/lib/bootstrap-datepicker.js"></script>
+    <script src="http://htmltreegrid.com/demo/minified-compiled-jquery.js"></script>
+    <script src="js/lib/grid/themes.js"></script>
+    <script src="js/lib/grid/Configuration.js"></script>
+    <script src="js/lib/grid/html2canvas.js"></script>
+    <script src="js/lib/grid/jspdf.source.js"></script>
+
+    <script src="js/config/ConfigLoader.js"></script>
+    <script src="js/config/MeetingDateGridConfig.js"></script>
+    <script src="js/config/ActivityNameGridConfig.js"></script>
+    <script src="js/config/MeetingAgendaSummaryConfig.js"></script>
+    <script src="js/config/ActivityMeetingSummaryConfig.js"></script>
+    <script src="js/constants/Constants.js"></script>
+    <script src="js/events/EventManager.js"></script>
+    <script src="js/events/MeetingDateEvent.js"></script>
+    <script src="js/controller/MeetingDateGridController.js"></script>
+    <script src="js/controller/ActivityNameGridController.js"></script>
+    <script src="js/controller/MeetingAgendaSummaryController.js"></script>
+    <script src="js/controller/ActivityMeetingSummaryController.js"></script>
+    <script src="js/service/Service.js"></script>
+    <script src="js/utils/Utils.js"></script>
+
+    <!--End-->
+
+
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="css/lib/bootstrap-select.css">
+    <link rel="stylesheet" href="css/lib/bootstrap-datepicker3.standalone.css">
+    <link rel="stylesheet" href="css/lib/jquery-ui.css">
+    <link rel="stylesheet" href="css/lib/jquery-ui.structure.css">
+    <link rel="stylesheet" href="css/lib/jquery-ui.theme.css">
+    <link rel="stylesheet" href="css/lib/flexicious.css"/>
+    <!--<link rel="stylesheet" href="css/lib/spinner.css"/>-->
+    <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+<div id="loader" style="display: none">
+    <img src="images/loading.GIF"><br>
+    <label> Loading... </label>
+</div>
+
+<div class="header">
+    <span class="headerText">Meeting-Activity Tracker</span>
+</div>
+
+<div class="container grid-wrapper">
+    <div class="row">
+        <div class="col-md-2 left-region">
+            <!-- TODO  add filter grid.-->
+            <div class="grid-container" id="meetingDateGridContainer"></div>
+            <div class="grid-container" id="activityNameGridContainer"></div>
+        </div>
+        <div class="col-md-10 right-region">
+            <!--TODO add remain grid-->
+            <div class="grid-container" id="meetingAgendaSummaryGridContainer"></div>
+            <div class="grid-container" style="height: 300px; background: #73995f;"
+                 id="activitySummaryGridContainer">Activity Summary</div>
+            <div class="grid-container" id="activityMeetingSummaryGridContainer"></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
