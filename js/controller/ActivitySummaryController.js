@@ -14,6 +14,7 @@ ActivitySummaryController.defaultFaultHandler = function(err){
 ActivitySummaryController.fetchActivitySummaryDetails = function(){
     Service.get(ActivitySummaryConfig.RestUrl + (ActivitySummaryConfig.Query ? "?"+ActivitySummaryConfig.Query : ""), undefined, function(res){
         ActivitySummaryController.dataProvider = res.d.results;
+        ActivitySummaryController.grid.setDataProvider(res.d.results);
     }, ActivitySummaryController.defaultFaultHandler);
 };
 

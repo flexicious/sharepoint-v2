@@ -7,7 +7,7 @@
     var a = {};
     a.Url = "http://psch.mspshosting.com/ofr/Lists/Project%20Summary";
     a.RestUrl = "http://psch.mspshosting.com/ofr/_api/web/lists/getbytitle('Project Summary')/Items";
-   // a.Query = "$Select=Department, Activity_x0020_Name, Owner, Sponsor, Phase, State, Health, Start, Est_x0020_Finish";
+   // a.Query = "$Select=Department, Activity_x0020_Name, Owner, Sponsor, Phase, State, Health, Start, EstFinish";
     a.VisibleItems = 5;
     a.RowHeight = 30;
     a.HeaderHeight = 30;
@@ -17,9 +17,35 @@
                     "<level rowHeight='"+ a.RowHeight+"' headerHeight='"+ a.HeaderHeight+"' >" +
                         "<columns>" +
                             "<column " +
-                                "headerStyleName='centerText' "+
+                                "dataField='Department' " +
+                                "headerText='Department' />" +
+                            "<column " +
                                 "dataField='Activity_x0020_Name' " +
                                 "headerText='Activity Name' />" +
+                            "<column " +
+                                "dataField='Owner' " +
+                                "headerText='Owner' />" +
+                            "<column " +
+                                "dataField='Sponsor' " +
+                                "headerText='Sponsor' />" +
+                            "<column " +
+                                "dataField='Phase' " +
+                                "headerText='Phase' />" +
+                            "<column " +
+                                "dataField='State' " +
+                                "headerText='State' />" +
+                            "<column " +
+                                "dataField='Health' " +
+                                "headerText='Health' />" +
+                            "<column " +
+                                "dataField='Start' " +
+                                "headerText='Start' />" +
+                            "<column " +
+                                "dataField='EstFinish' " +
+                                "headerText='EstFinish' />" +
+                            "<column " +
+                                "dataField='Description' " +
+                                "headerText='Description' />" +
                         "</columns>" +
                     "</level>" +
             "</grid>";

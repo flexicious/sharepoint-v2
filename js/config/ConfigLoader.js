@@ -29,7 +29,7 @@ ConfigLoader.load = function(){
     MeetingAgendaSummaryController.init(meetingAgendaSummaryDateGrid);
 
     var activitySummaryGrid = new flexiciousNmsp.FlexDataGrid(document.getElementById(Constants.ACTIVITY_SUMMARY_GRID_ID), {
-        configuration : ActivitySummaryConfig.configuration,
+        configuration : ActivitySummaryConfig.Configuration,
         delegate : window
     });
     ActivitySummaryController.init(activitySummaryGrid);
