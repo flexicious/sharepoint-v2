@@ -13,17 +13,18 @@
     a.HeaderHeight = 30;
     a.Configuration = "" +
         "<grid width='100%' " +
-            "height='"+ (a.HeaderHeight + (a.RowHeight * a.VisibleItems) + 10)+"'> " +
+            "height='"+ (a.HeaderHeight + (a.RowHeight * a.VisibleItems) + 10)+"' " +
+            "selectionMode='single'> " +
             "<level rowHeight='"+ a.RowHeight+"' headerHeight='"+ a.HeaderHeight+"' >" +
                 "<columns>" +
                     "<column " +
-                        "dataField='Date' " +     // TODO : need to tell the correct date field
+                        "dataField='Date.Title' " +     // TODO : need to tell the correct date field
                         "headerText='Date' />" +
                     "<column " +
-                        "dataField='ActivityName' " +     // TODO : need to tell the correct date field
+                        "dataField='Activity_x0020_Name' " +     // TODO : need to tell the correct date field
                         "headerText='Activity Name' />" +
                     "<column " +
-                        "dataField='Type' " +     // TODO : need to tell the correct date field
+                        "dataField='Types' " +     // TODO : need to tell the correct date field
                         "headerText='Type' />" +
                     "<column " +
                         "dataField='Title' " +     // TODO : need to tell the correct date field

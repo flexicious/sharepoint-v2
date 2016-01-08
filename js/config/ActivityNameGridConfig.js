@@ -18,7 +18,7 @@
                 "<columns>" +
                     "<column " +
                         "headerStyleName='centerText' "+
-                        "dataField='Name' " +     // TODO : need to tell the correct the
+                        "dataField='Activity_x0020_Name' " +     // TODO : need to tell the correct the
                         "headerText='Activity Name' />" +
                 "</columns>" +
             "</level>" +

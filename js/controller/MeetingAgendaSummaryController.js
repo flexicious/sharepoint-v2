@@ -11,11 +11,14 @@ MeetingAgendaSummaryController.defaultFaultHandler = function(err){
 
 MeetingAgendaSummaryController.init = function(grid){
     MeetingAgendaSummaryController.grid = grid;
-    /*EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_SELECTED , function(e){
 
-    });*/
+    EventManager.addEventListener(this, ActivityNameEvent.ACTIVITY_SELECTED, function(e){
+         MeetingAgendaSummaryController.grid.setDataProvider(e.selectedActivity);
+    });
 
-    EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_DATA_LOADED, function(e){
-         MeetingAgendaSummaryController.grid.setDataProvider(e.data); // TODO : load the data into the grid, when project selected in the activity name grid.
+    grid.addEventListener(this, flexiciousNmsp.Constants.EVENT_CHANGE , function(e){
+        var meetingAgendaEvent = new MeetingAgendaEvent(MeetingAgendaEvent.MEETING_AGENDA_SELECT_EVENT);
+        meetingAgendaEvent.selectedAgenda = MeetingAgendaSummaryController.grid.getSelectedItem();
+        EventManager.dispatchEvent(meetingAgendaEvent);
     });
 };

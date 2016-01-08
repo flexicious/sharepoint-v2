@@ -8,7 +8,17 @@
         if(!type)
             throw Error("type require");
         this.type = type;
+
+        /**
+         * array of selected items on the meeting date grid
+         * @type {Array}
+         */
         this.selectedDate = null;
+
+        /**
+         *
+         * @type {null}
+         */
         this.data = null;
     };
 

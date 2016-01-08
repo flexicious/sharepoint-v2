@@ -12,10 +12,11 @@ ActivityNameGridController.defaultFaultHandler = function(err){
 ActivityNameGridController.init = function(grid){
     ActivityNameGridController.grid = grid;
     EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_SELECTED , function(e){
-
-    });
-
-    EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_DATA_LOADED, function(e){
-        ActivityNameGridController.grid.setDataProvider(e.data);
+        ActivityNameGridController.grid.setDataProvider(e.selectedDate);
+        grid.addEventListener(this, flexiciousNmsp.Constants.EVENT_CHANGE, function(e){
+            var activityNameEvent = new ActivityNameEvent(ActivityNameEvent.ACTIVITY_SELECTED);
+            activityNameEvent.selectedActivity = ActivityNameGridController.grid.getSelectedItems();
+            EventManager.dispatchEvent(activityNameEvent);
+        });
     });
 };
