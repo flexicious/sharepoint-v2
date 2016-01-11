@@ -28,11 +28,23 @@ ConfigLoader.load = function(){
     });
     MeetingAgendaSummaryController.init(meetingAgendaSummaryDateGrid);
 
-    var activitySummaryGrid = new flexiciousNmsp.FlexDataGrid(document.getElementById(Constants.ACTIVITY_SUMMARY_GRID_ID), {
-        configuration : ActivitySummaryConfig.Configuration,
+    var activitySummaryGrid1 = new flexiciousNmsp.FlexDataGrid(document.getElementById(Constants.ACTIVITY_SUMMARY_GRID_ID_1), {
+        configuration : ActivitySummaryConfig.Configuration1,
         delegate : window
     });
-    ActivitySummaryController.init(activitySummaryGrid);
+    var activitySummaryGrid2 = new flexiciousNmsp.FlexDataGrid(document.getElementById(Constants.ACTIVITY_SUMMARY_GRID_ID_2), {
+        configuration : ActivitySummaryConfig.Configuration2,
+        delegate : window
+    });
+    var activitySummaryGrid3 = new flexiciousNmsp.FlexDataGrid(document.getElementById(Constants.ACTIVITY_SUMMARY_GRID_ID_3), {
+        configuration : ActivitySummaryConfig.Configuration3,
+        delegate : window
+    });
+    var activitySummaryGrid4 = new flexiciousNmsp.FlexDataGrid(document.getElementById(Constants.ACTIVITY_SUMMARY_GRID_ID_4), {
+        configuration : ActivitySummaryConfig.Configuration4,
+        delegate : window
+    });
+    ActivitySummaryController.init([activitySummaryGrid1,activitySummaryGrid2,activitySummaryGrid3,activitySummaryGrid4]);
 
     var activityMeetingSummaryGrid = new flexiciousNmsp.FlexDataGrid(document.getElementById(Constants.ACTIVITY_MEETING_SUMMARY_GRID_ID), {
         configuration : ActivityMeetingSummaryConfig.Configuration,

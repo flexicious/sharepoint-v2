@@ -17,8 +17,11 @@ ActivitySummaryController.fetchActivitySummaryDetails = function(){
     }, ActivitySummaryController.defaultFaultHandler);
 };
 
-ActivitySummaryController.init = function(grid){
-    ActivitySummaryController.grid = grid;
+ActivitySummaryController.init = function(grids){
+    ActivitySummaryController.grid1 = grids[0];
+    ActivitySummaryController.grid2 = grids[1];
+    ActivitySummaryController.grid3 = grids[2];
+    ActivitySummaryController.grid4 = grids[3];
     ActivitySummaryController.fetchActivitySummaryDetails();
 
     EventManager.addEventListener(this, MeetingAgendaEvent.MEETING_AGENDA_SELECT_EVENT, function(e){
@@ -27,7 +30,10 @@ ActivitySummaryController.init = function(grid){
 
     EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_SELECTED , function(e){
         // need to reset the grid on the data selection in the meeting date grid.
-        ActivitySummaryController.grid.setDataProvider([]);
+        ActivitySummaryController.grid1.setDataProvider([]);
+        ActivitySummaryController.grid2.setDataProvider([]);
+        ActivitySummaryController.grid3.setDataProvider([]);
+        ActivitySummaryController.grid4.setDataProvider([]);
     });
 };
 
@@ -36,7 +42,10 @@ ActivitySummaryController.filterAndApplyData = function(selectedAgenda){
         return;
     for(var i = 0; i < ActivitySummaryController.dataProvider.length; i++){
         if(selectedAgenda["Activity_x0020_Name"] == ActivitySummaryController.dataProvider[i]["ProjectName"]) {
-            ActivitySummaryController.grid.setDataProvider([ActivitySummaryController.dataProvider[i]]);
+            ActivitySummaryController.grid1.setDataProvider([ActivitySummaryController.dataProvider[i]]);
+            ActivitySummaryController.grid2.setDataProvider([ActivitySummaryController.dataProvider[i]]);
+            ActivitySummaryController.grid3.setDataProvider([ActivitySummaryController.dataProvider[i]]);
+            ActivitySummaryController.grid4.setDataProvider([ActivitySummaryController.dataProvider[i]]);
             break;
         }
     }
