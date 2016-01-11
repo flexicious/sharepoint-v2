@@ -18,6 +18,7 @@
                 "<columns>" +
                     "<column " +
                         "headerStyleName='centerText' "+
+                        "sortCompareFunction='ActivityNameGridController.sortCompareFunction' "+
                         "dataField='Activity_x0020_Name' " +     // TODO : need to tell the correct the
                         "headerText='Activity Name' />" +
                 "</columns>" +

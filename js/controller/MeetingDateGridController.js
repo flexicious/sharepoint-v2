@@ -12,9 +12,16 @@ MeetingDateGridController.defaultFaultHandler = function(err){
 MeetingDateGridController.fetchMeetingDates = function(){
     Service.get(MeetingDateGridConfig.RestUrl+(MeetingDateGridConfig.Query? "?"+MeetingDateGridConfig.Query : ""), undefined , function(res){
         MeetingDateGridController.grid.setDataProvider(res.d.results);
+        var sort = new flexiciousNmsp.FilterSort();
+        sort.sortColumn = "Date.Title";
+        sort.sortCompareFunction = MeetingDateGridController.sortCompareFunction;
+        sort.isAscending = true;
+        MeetingDateGridController.grid.processSort([sort]);
+
         var meetingEvent = new MeetingDateEvent(MeetingDateEvent.MEETING_DATE_DATA_LOADED);
         meetingEvent.data = res.d.results;
         EventManager.dispatchEvent(meetingEvent);
+
     }, MeetingDateGridController.defaultFaultHandler);
 };
 

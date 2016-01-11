@@ -11,11 +11,13 @@ ActivityMeetingSummaryController.defaultFaultHandler = function(err){
 
 ActivityMeetingSummaryController.init = function(grid){
     ActivityMeetingSummaryController.grid = grid;
-    EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_SELECTED , function(e){
 
-    });
-
-    EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_DATA_LOADED, function(e){
-        ActivityMeetingSummaryController.grid.setDataProvider(e.data);
+    EventManager.addEventListener(this, MeetingAgendaEvent.MEETING_AGENDA_SELECT_EVENT, function(e){
+        ActivityMeetingSummaryController.grid.setDataProvider(e.selectedAgendas);
+        var sort = new flexiciousNmsp.FilterSort();
+        sort.sortColumn = "Date.Title";
+        sort.sortCompareFunction = MeetingDateGridController.sortCompareFunction;
+        sort.isAscending = false;
+        ActivityMeetingSummaryController.grid.processSort([sort]);
     });
 };

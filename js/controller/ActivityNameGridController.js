@@ -13,10 +13,20 @@ ActivityNameGridController.init = function(grid){
     ActivityNameGridController.grid = grid;
     EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_SELECTED , function(e){
         ActivityNameGridController.grid.setDataProvider(e.selectedDate);
-        grid.addEventListener(this, flexiciousNmsp.Constants.EVENT_CHANGE, function(e){
-            var activityNameEvent = new ActivityNameEvent(ActivityNameEvent.ACTIVITY_SELECTED);
-            activityNameEvent.selectedActivity = ActivityNameGridController.grid.getSelectedItems();
-            EventManager.dispatchEvent(activityNameEvent);
-        });
+        var sort = new flexiciousNmsp.FilterSort();
+        sort.sortColumn  = "Activity_x0020_Name";
+        sort.sortCompareFunction = ActivityNameGridController.sortCompareFunction;
+        sort.isAscending = true;
+        ActivityNameGridController.grid.processSort([sort]);
     });
+
+    grid.addEventListener(this, flexiciousNmsp.Constants.EVENT_CHANGE, function(e){
+        var activityNameEvent = new ActivityNameEvent(ActivityNameEvent.ACTIVITY_SELECTED);
+        activityNameEvent.selectedActivity = ActivityNameGridController.grid.getSelectedItems();
+        EventManager.dispatchEvent(activityNameEvent);
+    });
+};
+
+ActivityNameGridController.sortCompareFunction = function(a,b){
+    return a < b ? -1 : a == b ? 0 : 1;
 };

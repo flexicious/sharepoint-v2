@@ -18,7 +18,9 @@ MeetingAgendaSummaryController.init = function(grid){
 
     grid.addEventListener(this, flexiciousNmsp.Constants.EVENT_CHANGE , function(e){
         var meetingAgendaEvent = new MeetingAgendaEvent(MeetingAgendaEvent.MEETING_AGENDA_SELECT_EVENT);
-        meetingAgendaEvent.selectedAgenda = MeetingAgendaSummaryController.grid.getSelectedItem();
+        var selectedItems = MeetingAgendaSummaryController.grid.getSelectedItems();
+        meetingAgendaEvent.selectedAgenda = selectedItems.length ? selectedItems[selectedItems.length-1] : [];
+        meetingAgendaEvent.selectedAgendas = selectedItems;
         EventManager.dispatchEvent(meetingAgendaEvent);
     });
 };

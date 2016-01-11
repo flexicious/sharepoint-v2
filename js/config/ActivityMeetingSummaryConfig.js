@@ -17,10 +17,11 @@
             "<level rowHeight='"+ a.RowHeight+"' headerHeight='"+ a.HeaderHeight+"' >" +
                 "<columns>" +
                     "<column " +
-                        "dataField='Date' " +     // TODO : need to tell the correct the
-                        "headerText='Date' />" +
+                        "dataField='Date.Title' " +     // TODO : need to tell the correct the
+                        "headerText='Date' " +
+                        "sortCompareFunction='MeetingDateGridController.sortCompareFunction' />" +
                     "<column " +
-                        "dataField='Type' " +     // TODO : need to tell the correct the
+                        "dataField='Types' " +     // TODO : need to tell the correct the
                         "headerText='Type' />" +
                     "<column " +
                         "dataField='Title' " +     // TODO : need to tell the correct the

@@ -14,7 +14,6 @@ ActivitySummaryController.defaultFaultHandler = function(err){
 ActivitySummaryController.fetchActivitySummaryDetails = function(){
     Service.get(ActivitySummaryConfig.RestUrl + (ActivitySummaryConfig.Query ? "?"+ActivitySummaryConfig.Query : ""), undefined, function(res){
         ActivitySummaryController.dataProvider = res.d.results;
-        ActivitySummaryController.grid.setDataProvider(res.d.results);
     }, ActivitySummaryController.defaultFaultHandler);
 };
 
@@ -25,10 +24,21 @@ ActivitySummaryController.init = function(grid){
     EventManager.addEventListener(this, MeetingAgendaEvent.MEETING_AGENDA_SELECT_EVENT, function(e){
         ActivitySummaryController.filterAndApplyData(e.selectedAgenda);
     });
+
+    EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_SELECTED , function(e){
+        // need to reset the grid on the data selection in the meeting date grid.
+        ActivitySummaryController.grid.setDataProvider([]);
+    });
 };
 
 ActivitySummaryController.filterAndApplyData = function(selectedAgenda){
-    // TODO : need to apply
-
+    if(!selectedAgenda)
+        return;
+    for(var i = 0; i < ActivitySummaryController.dataProvider.length; i++){
+        if(selectedAgenda["Activity_x0020_Name"] == ActivitySummaryController.dataProvider[i]["ProjectName"]) {
+            ActivitySummaryController.grid.setDataProvider([ActivitySummaryController.dataProvider[i]]);
+            break;
+        }
+    }
 };
 
