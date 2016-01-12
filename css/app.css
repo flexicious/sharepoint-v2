@@ -63,3 +63,7 @@
 .centerText label{
     text-align: center !important;
 }
+
+.flexiciousGrid label{
+    text-align: inherit;
+}

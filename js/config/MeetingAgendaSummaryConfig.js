@@ -13,6 +13,7 @@
     a.HeaderHeight = 30;
     a.Configuration = "" +
         "<grid width='100%' " +
+            "selectionMode='singleRow' " +
             "height='"+ (a.HeaderHeight + (a.RowHeight * a.VisibleItems) + 10)+"' > " +
             "<level rowHeight='"+ a.RowHeight+"' headerHeight='"+ a.HeaderHeight+"' >" +
                 "<columns>" +

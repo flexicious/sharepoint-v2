@@ -18,7 +18,7 @@
                     "<level rowHeight='"+ a.RowHeight+"' headerHeight='"+ a.HeaderHeight+"' >" +
                         "<columns>" +
                             "<column " +
-                                "dataField='Department' " +
+                                "dataField='Project_x0020_Department' " +
                                 "headerText='Department' />" +
                             "<column " +
                                 "dataField='ProjectName' " +
@@ -59,7 +59,7 @@
                             "dataField='Health' " +
                             "headerText='Health' />" +
                         "<column " +
-                            "dataField='Start' " +
+                            "dataField='Project_x0020_Start' " +
                             "headerText='Start' />" +
                         "<column " +
                             "dataField='EstFinish' " +
