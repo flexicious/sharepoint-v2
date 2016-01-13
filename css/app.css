@@ -52,8 +52,15 @@
 .grid-container{
     width: 100%;
     border-radius: 4px;
-    box-shadow: 0 0 3px 1px rgba(0,0,0, .4);
+    box-shadow: 0 0 3px 1px rgba(0,0,0, .1);
     margin: 10px 0;
+}
+
+.grid-header{
+    background: #ffff00;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid;
 }
 
 .centerText{

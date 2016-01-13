@@ -13,7 +13,7 @@
          * array of selected items on the meeting date grid
          * @type {Array}
          */
-        this.selectedDate = null;
+        this.selectedDates = null;
 
         /**
          *

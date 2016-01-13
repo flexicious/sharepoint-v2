@@ -65,20 +65,27 @@
 <div class="container grid-wrapper">
     <div class="row">
         <div class="col-md-2 left-region">
-            <!-- TODO  add filter grid.-->
             <div class="grid-container" id="meetingDateGridContainer"></div>
             <div class="grid-container" id="activityNameGridContainer"></div>
         </div>
         <div class="col-md-10 right-region">
-            <!--TODO add remain grid-->
-            <div class="grid-container" id="meetingAgendaSummaryGridContainer"></div>
-            <div class="grid-container row">
-                <div id="activitySummaryGridContainer1" class="col-md-12"></div>
-                <div id="activitySummaryGridContainer2" class="col-md-12"></div>
-                <div id="activitySummaryGridContainer3" class="col-md-12"></div>
-                <div id="activitySummaryGridContainer4" class="col-md-12"></div>
+            <div class="grid-container">
+                <div class="grid-header">Meeting Agenda Summary</div>
+                <div id="meetingAgendaSummaryGridContainer"></div>
             </div>
-            <div class="grid-container" id="activityMeetingSummaryGridContainer"></div>
+            <div class="grid-container row">
+                    <div class="grid-header">Activity Summary</div>
+                    <div class="row" style="margin: 0">
+                        <div id="activitySummaryGridContainer1" class="col-md-12"></div>
+                        <div id="activitySummaryGridContainer2" class="col-md-12"></div>
+                        <div id="activitySummaryGridContainer3" class="col-md-12"></div>
+                        <div id="activitySummaryGridContainer4" class="col-md-12"></div>
+                    </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-header">Activity Meeting Summary</div>
+                <div id="activityMeetingSummaryGridContainer"></div>
+            </div>
         </div>
     </div>
 </div>

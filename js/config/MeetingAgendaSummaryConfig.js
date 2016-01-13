@@ -18,19 +18,21 @@
             "<level rowHeight='"+ a.RowHeight+"' headerHeight='"+ a.HeaderHeight+"' >" +
                 "<columns>" +
                     "<column " +
-                        "dataField='Date.Title' " +     // TODO : need to tell the correct date field
+                        "dataField='Date.Title' " +
+                        "sortCompareFunction='MeetingDateGridController.sortCompareFunction' "+
                         "headerText='Date' />" +
                     "<column " +
-                        "dataField='Activity_x0020_Name' " +     // TODO : need to tell the correct date field
+                        "dataField='Activity_x0020_Name' " +
+                        "sortCompareFunction='ActivityNameGridController.sortCompareFunction' "+
                         "headerText='Activity Name' />" +
                     "<column " +
-                        "dataField='Types' " +     // TODO : need to tell the correct date field
+                        "dataField='Types' " +
                         "headerText='Type' />" +
                     "<column " +
-                        "dataField='Title' " +     // TODO : need to tell the correct date field
+                        "dataField='Title' " +
                         "headerText='Title' />" +
                     "<column " +
-                        "dataField='Status' " +     // TODO : need to tell the correct date field
+                        "dataField='Status' " +
                         "headerText='Status' />" +
                 "</columns>" +
             "</level>" +

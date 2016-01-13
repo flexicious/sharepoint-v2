@@ -11,6 +11,11 @@ MeetingDateGridController.defaultFaultHandler = function(err){
 
 MeetingDateGridController.fetchMeetingDates = function(){
     Service.get(MeetingDateGridConfig.RestUrl+(MeetingDateGridConfig.Query? "?"+MeetingDateGridConfig.Query : ""), undefined , function(res){
+        /**
+         *
+         * can share across over the controller
+         */
+        MeetingDateGridController.dataProvider = res.d.results;
         MeetingDateGridController.grid.setDataProvider(res.d.results);
         var sort = new flexiciousNmsp.FilterSort();
         sort.sortColumn = "Date.Title";
@@ -30,7 +35,7 @@ MeetingDateGridController.init = function(grid){
     MeetingDateGridController.fetchMeetingDates();
     MeetingDateGridController.grid.addEventListener(this, flexiciousNmsp.Constants.EVENT_CHANGE, function(event){
         var meetingDateEvent = new MeetingDateEvent(MeetingDateEvent.MEETING_DATE_SELECTED);
-        meetingDateEvent.selectedDate = MeetingDateGridController.grid.getSelectedItems();
+        meetingDateEvent.selectedDates = MeetingDateGridController.grid.getSelectedItems();
         EventManager.dispatchEvent(meetingDateEvent);
     });
 };

@@ -70,11 +70,12 @@
 
     a.Configuration4 = "" +
             "<grid width='100%' " +
-                "noDataMessage='0' " +
-                "height='"+ (a.HeaderHeight + (a.RowHeight * a.VisibleItems))+"'> " +
-                "<level rowHeight='"+ a.RowHeight+"' headerHeight='"+ a.HeaderHeight+"' >" +
+                "noDataMessage='0' variableRowHeight='true' enableFillerRows='true' horizontalGridLines='false' " +
+                 "height='"+ (a.HeaderHeight + (a.RowHeight * (a.VisibleItems + 2)))+"'> " +
+                "<level headerHeight='"+ a.HeaderHeight+"' >" +
                     "<columns>" +
                         "<column " +
+                            "wordWrap='true' "+
                             "dataField='Description' " +
                             "headerText='Description' />" +
                     "</columns>" +
