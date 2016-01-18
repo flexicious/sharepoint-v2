@@ -27,13 +27,24 @@ ActivityNameGridController.init = function(grid){
     });
 };
 
-ActivityNameGridController.getUniqueListByName = function(selectedDates){
+ActivityNameGridController.getUniqueListByName = function(selectedDates) {
+    // list of agenda for selected dates.
+    var meetingAgendas = [];
+    var dp = MeetingDateGridController.serviceResult, i = 0;
+
+    for (var k = 0; k < selectedDates.length; k++) {
+        for (i = 0; i < dp.length; i++) {
+            if (dp[i]["MDate"]["CDate"] == selectedDates[k]["MDate"]["CDate"])
+                meetingAgendas.push(dp[i]);
+        }
+    }
+
     var selectedItems = [];
     var dump = [];
-    for(var i = 0; i < selectedDates.length; i++){
-        if(dump.indexOf(selectedDates[i]["Activity_x0020_Name"]) == -1){
-            dump.push(selectedDates[i]["Activity_x0020_Name"]);
-            selectedItems.push({Activity_x0020_Name : selectedDates[i]["Activity_x0020_Name"]});
+    for(i = 0; i < meetingAgendas.length; i++){
+        if(dump.indexOf(meetingAgendas[i]["Activity_x0020_Name"]) == -1){
+            dump.push(meetingAgendas[i]["Activity_x0020_Name"]);
+            selectedItems.push({Activity_x0020_Name : meetingAgendas[i]["Activity_x0020_Name"]});
         }
     }
     dump = null;
@@ -41,5 +52,5 @@ ActivityNameGridController.getUniqueListByName = function(selectedDates){
 };
 
 ActivityNameGridController.sortCompareFunction = function(a,b){
-    return a < b ? -1 : a == b ? 0 : 1;
+    return a["Activity_x0020_Name"] < b["Activity_x0020_Name"] ? -1 : a["Activity_x0020_Name"] == b["Activity_x0020_Name"] ? 0 : 1;
 };

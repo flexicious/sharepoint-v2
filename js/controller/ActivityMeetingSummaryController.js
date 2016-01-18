@@ -12,28 +12,28 @@ ActivityMeetingSummaryController.defaultFaultHandler = function(err){
 ActivityMeetingSummaryController.init = function(grid){
     ActivityMeetingSummaryController.grid = grid;
 
-    EventManager.addEventListener(this, ActivityNameEvent.ACTIVITY_SELECTED, function(e){
-        ActivityMeetingSummaryController.filterAndApply(e.selectedActivity);
+    EventManager.addEventListener(this, MeetingAgendaEvent.MEETING_AGENDA_SELECT_EVENT, function(e){
+        ActivityMeetingSummaryController.filterAndApply(e.selectedAgenda);
     });
 };
 
-ActivityMeetingSummaryController.filterAndApply = function(selectedActivity){
-    // TODO : if not care the meeting date, then pick the data from the meeting grid dataprovider
-    //var dp = MeetingDateGridController.dataProvider;
-    var selectedDates = MeetingDateGridController.grid.getSelectedItems();
-    selectedActivity = flexiciousNmsp.UIUtils.extractPropertyValues(selectedActivity, "Activity_x0020_Name");
-    // TODO not sure,  filter based on dates toooooo
-    var selectedItems = [];
-    for(var i = 0; i < selectedDates.length; i++){
-        if(selectedActivity.indexOf(selectedDates[i]["Activity_x0020_Name"]) != -1){
-            selectedItems.push(selectedDates[i]);
-        }
+ActivityMeetingSummaryController.filterAndApply = function(selectedAgenda){
+    if(!selectedAgenda){
+        ActivityMeetingSummaryController.grid.setDataProvider([]);
+        return;
     }
 
+    var dp = MeetingDateGridController.serviceResult;
+    var selectedItems = [];
+    for(var i = 0; i < dp.length; i++){
+        if(dp[i]["Activity_x0020_Name"] == selectedAgenda["Activity_x0020_Name"]){
+            selectedItems.push(dp[i]);
+        }
+    }
     ActivityMeetingSummaryController.grid.setDataProvider(selectedItems);
 
     var sort = new flexiciousNmsp.FilterSort();
-    sort.sortColumn = "Date.Title";
+    sort.sortColumn = "MDate.CDate";
     sort.sortCompareFunction = MeetingDateGridController.sortCompareFunction;
     sort.isAscending = false;
     ActivityMeetingSummaryController.grid.processSort([sort]);

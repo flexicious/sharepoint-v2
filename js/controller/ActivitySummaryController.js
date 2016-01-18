@@ -8,7 +8,7 @@ ActivitySummaryController.grid = null;
 ActivitySummaryController.dataProvider = null;
 
 ActivitySummaryController.defaultFaultHandler = function(err){
-    alert("Error occur while loading the data");
+    //alert("Error occur while loading the data");
 };
 
 ActivitySummaryController.fetchActivitySummaryDetails = function(){
@@ -30,16 +30,22 @@ ActivitySummaryController.init = function(grids){
 
     EventManager.addEventListener(this, MeetingDateEvent.MEETING_DATE_SELECTED , function(e){
         // need to reset the grid on the data selection in the meeting date grid.
-        ActivitySummaryController.grid1.setDataProvider([]);
-        ActivitySummaryController.grid2.setDataProvider([]);
-        ActivitySummaryController.grid3.setDataProvider([]);
-        ActivitySummaryController.grid4.setDataProvider([]);
+        ActivitySummaryController.resetGridDataProvider();
     });
 };
 
+ActivitySummaryController.resetGridDataProvider = function(){
+    ActivitySummaryController.grid1.setDataProvider([]);
+    ActivitySummaryController.grid2.setDataProvider([]);
+    ActivitySummaryController.grid3.setDataProvider([]);
+    ActivitySummaryController.grid4.setDataProvider([]);
+};
+
 ActivitySummaryController.filterAndApplyData = function(selectedAgenda){
-    if(!selectedAgenda)
+    if(!selectedAgenda || !ActivitySummaryController.dataProvider || !ActivitySummaryController.dataProvider.length) {
+        ActivitySummaryController.resetGridDataProvider();
         return;
+    }
     for(var i = 0; i < ActivitySummaryController.dataProvider.length; i++){
         if(selectedAgenda["Activity_x0020_Name"] == ActivitySummaryController.dataProvider[i]["ProjectName"]) {
             ActivitySummaryController.grid1.setDataProvider([ActivitySummaryController.dataProvider[i]]);

@@ -12,21 +12,10 @@ MeetingDateGridController.defaultFaultHandler = function(err){
 MeetingDateGridController.fetchMeetingDates = function(){
     Service.get(MeetingDateGridConfig.RestUrl+(MeetingDateGridConfig.Query? "?"+MeetingDateGridConfig.Query : ""), undefined , function(res){
         /**
-         *
          * can share across over the controller
          */
-        MeetingDateGridController.dataProvider = res.d.results;
-        MeetingDateGridController.grid.setDataProvider(res.d.results);
-        var sort = new flexiciousNmsp.FilterSort();
-        sort.sortColumn = "Date.Title";
-        sort.sortCompareFunction = MeetingDateGridController.sortCompareFunction;
-        sort.isAscending = true;
-        MeetingDateGridController.grid.processSort([sort]);
-
-        var meetingEvent = new MeetingDateEvent(MeetingDateEvent.MEETING_DATE_DATA_LOADED);
-        meetingEvent.data = res.d.results;
-        EventManager.dispatchEvent(meetingEvent);
-
+        MeetingDateGridController.serviceResult = res.d.results;
+        MeetingDateGridController.filterAndApply(res.d.results);
     }, MeetingDateGridController.defaultFaultHandler);
 };
 
@@ -40,6 +29,26 @@ MeetingDateGridController.init = function(grid){
     });
 };
 
+MeetingDateGridController.filterAndApply = function(dp){
+    var selectedDates = [];
+    var dump = [];
+    for(var i = 0; i < dp.length; i++){
+        if(dump.indexOf(dp[i]["MDate"]["CDate"]) == -1){
+            dump.push(dp[i]["MDate"]["CDate"]);
+            selectedDates.push({ MDate : { CDate : dp[i]["MDate"]["CDate"]}});
+        }
+    }
+
+    MeetingDateGridController.grid.setDataProvider(selectedDates);
+
+    var sort = new flexiciousNmsp.FilterSort();
+    sort.sortColumn = "MDate.CDate";
+    sort.sortCompareFunction = MeetingDateGridController.sortCompareFunction;
+    sort.isAscending = true;
+    MeetingDateGridController.grid.processSort([sort]);
+
+};
+
 MeetingDateGridController.sortCompareFunction = function(a,b){
-    return Date.parse(a.Date.Title) - Date.parse(b.Date.Title);
+    return Date.parse(a.MDate.CDate) - Date.parse(b.MDate.CDate);
 };

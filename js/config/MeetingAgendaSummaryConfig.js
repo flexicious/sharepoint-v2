@@ -18,7 +18,7 @@
             "<level rowHeight='"+ a.RowHeight+"' headerHeight='"+ a.HeaderHeight+"' >" +
                 "<columns>" +
                     "<column " +
-                        "dataField='Date.Title' " +
+                        "dataField='MDate.CDate' " +
                         "sortCompareFunction='MeetingDateGridController.sortCompareFunction' "+
                         "headerText='Date' />" +
                     "<column " +

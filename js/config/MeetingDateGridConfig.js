@@ -8,7 +8,7 @@
     var a = {};
     a.Url = "http://psch.mspshosting.com/ofr/Lists/Meeting%20Agenda";
     a.RestUrl = "http://psch.mspshosting.com/ofr/_api/web/lists/getbytitle('Meeting Agenda')/Items";
-    a.Query = "$Select=Activity_x0020_Name, Types, Status, Title, Committees_x0020_Decision, Date/Title&$expand=Date";
+    a.Query = "$Select=Activity_x0020_Name, Types, Status, Title, Committees_x0020_Decision, MDate/CDate&$expand=MDate";
     a.VisibleItems = 5;
     a.RowHeight = 30;
     a.HeaderHeight = 30;
@@ -19,9 +19,9 @@
                 "<columns>" +
                     "<column " +
                         "headerStyleName='centerText' "+
-                        "initialSortField='Date.Title' " +
+                        "initialSortField='MDate.CDate' " +
                         "sortCompareFunction='MeetingDateGridController.sortCompareFunction' "+
-                        "dataField='Date.Title' " +     // TODO : need to tell the correct the
+                        "dataField='MDate.CDate' " +     // TODO : need to tell the correct the
                         "headerText='Meeting Date' />" +
                 "</columns>" +
             "</level>" +
